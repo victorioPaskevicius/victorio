@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    text-decoration: none;
+    list-style: none;
+}
+
+
+h1,
+h2,
+h3,
+h4{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+}
+p,
+b,
+input,
+label{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+}
+
+:root{
+    /* Paleta de Colores:
+Azul Principal:
+    Color Primario: #3498db
+    Color Secundario: #2980b9
+
+Verde para Destacar:
+    Color: #2ecc71
+
+Gris para Texto:
+    Color: #95a5a6
+
+Blanco para Fondo:
+    Color: #ecf0f1
+
+Acento Naranja (para botones o detalles):
+    Color: #e67e22
+
+
+Uso de la Paleta:
+Utiliza el azul principal para encabezados, botones destacados o áreas importantes.
+
+El verde puede ser utilizado para resaltar elementos específicos o para indicar acciones positivas.
+
+El gris es adecuado para texto principal y elementos que no requieren atención especial.
+
+El blanco puede ser utilizado como fondo para proporcionar un diseño limpio y moderno.
+
+El acento naranja puede usarse con moderación para destacar botones de llamada a la acción u otros elementos importantes. */
+}
+
+body{
+    scroll-behavior: smooth;
+}
+
+header{
+    background-image: url(fondoHeader.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+
+    margin-bottom: 20vh;
+    padding: 0 25%;
+
+    display: flex;
+    justify-content: space-between;
+}
