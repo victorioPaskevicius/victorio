@@ -256,7 +256,8 @@ input,
 label,
 button,
 span,
-svg{
+svg,
+div{
     view-timeline-name: --image;
     view-timeline-axis: block;
     
@@ -273,4 +274,107 @@ article{
     width: 50%;
     padding-top: 20vh;
     margin: auto;
+}
+
+.inicio{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    margin-bottom: 15vh;
+}
+
+.inicio h2{
+    text-align: center;
+    font-size: 35px;
+    letter-spacing: 4px;
+    padding-bottom: 30px;
+
+    color: #58D0E1;
+}
+
+.inicio p{
+    font-size: 20px;
+    max-width: 65ch;
+    margin: auto;
+}
+
+.inicio h3{
+    text-align: center;
+    font-size: 25px;
+}
+
+.container__proyectos{
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.div__container__proyectos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    background-color: #1f242c;
+    border-radius: 5px;
+    max-width: 450px;
+    height: fit-content;
+    overflow: hidden;
+}
+
+.container__img__proyecto{
+    overflow: hidden;
+    transition: all.2s;
+}
+
+.div__container__proyectos img{
+    transform: scale(2);
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.container__img__proyecto p{
+    padding: 0 15px;
+}
+
+.container__svg{
+    display: flex;
+}
+
+.container__svg svg{
+    fill: #95a5a6;
+    transition: all .1s;
+}
+
+.container__svg svg:hover{
+    fill: #e67e22;
+    transform: scale(1.05);
+}
+
+.ancor__button{
+    transform: translateY(500px);
+    transition: transform .2s;
+}
+
+.ancor__button button{
+    border: 1px solid #171B22;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 5px 10px;
+    background-color: #95a5a6;
+    cursor: pointer;
+}
+
+.ancor__button button:hover{
+    background-color: #e67e22;
+    transition: all .1s;
+}
+
+.div__container__proyectos:hover .ancor__button{
+    transform: translateY(0px);
+}
+
+.div__container__proyectos:hover .container__img__proyecto{
+    transform: scale(1.05);
 }
