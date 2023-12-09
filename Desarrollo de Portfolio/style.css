@@ -268,7 +268,7 @@ div{
     animation-fill-mode: both;
 }
 
-/* secciones */
+/* seccione 'inicio' */
 
 article{
     width: 50%;
@@ -376,5 +376,149 @@ article{
 }
 
 .div__container__proyectos:hover .container__img__proyecto{
+    transform: scale(1.05);
+}
+
+/* section 'Sobre mi' */
+.sobre-mi{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    margin-bottom: 15vh;
+}
+
+.sobre-mi h2{
+    text-align: center;
+    font-size: 35px;
+    letter-spacing: 4px;
+    padding-bottom: 30px;
+
+    color: #58D0E1;
+}
+
+.sobre-mi p{
+    font-size: 20px;
+    max-width: 65ch;
+    margin: auto;
+}
+
+.sobre-mi h3{
+    text-align: center;
+    font-size: 25px;
+}
+
+.container__sobreMi {
+    padding: 20px;
+    background-color: #1f242c;
+    border: #95a5a6 1px solid;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+.container__sobreMi:focus{
+    border: none;
+}
+
+.container__sobreMi p {
+    display: none;
+}
+
+.container__sobreMi:focus p {
+    display: block;
+}
+
+
+/* seccion proyectos */
+.portfolio{
+    margin-bottom: 15vh;
+}
+
+.portfolio h2{
+    text-align: center;
+    font-size: 35px;
+    letter-spacing: 4px;
+    padding-bottom: 30px;
+
+    color: #58D0E1;
+}
+
+.container__all_proyects{
+    display: grid;
+    grid-template-columns: 450px 450px;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.container__single_proyect{
+    background-color: #1f242c;
+    border-radius: 5px;
+    max-width: 450px;
+    height: fit-content;
+    overflow: hidden;
+
+    text-align: center;
+}
+
+.img__proyecto{
+    overflow: hidden;
+}
+
+.img__proyecto img{
+    max-width: 450px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    transition: .2s;
+}
+
+.container__single_proyect a{
+}
+
+.container__single_proyect:hover .img__proyecto img{
+    transform: scale(1.05);
+}
+
+.container__single_proyect a button{
+    border: 1px solid #171B22;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 5px 10px;
+    background-color: #95a5a6;
+    cursor: pointer;
+
+    transform: translateY(500px);
+    margin-top: 10px;
+    transition: transform .2s;
+}
+
+.container__single_proyect:hover a button{
+    transform: translateY(0);
+}
+
+.container__single_proyect a button:hover{
+    background-color: #e67e22;
+    transition: all .1s;
+}
+
+.descripcion__proyect{
+
+}
+
+.descripcion__proyect p{
+    padding: 0 15px;
+    font-size: 20px;
+    margin: 15px 0px;
+}
+
+.descripcion__proyect svg{
+    fill: #95a5a6;
+    transition: all .1s;
+}
+
+.descripcion__proyect svg:hover{
+    fill: #e67e22;
     transform: scale(1.05);
 }
