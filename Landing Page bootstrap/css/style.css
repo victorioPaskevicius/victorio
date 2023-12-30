@@ -1,0 +1,100 @@
+/* Custom properties */
+:root{
+    --first-color: rgb(217, 0, 98);
+    --first-alpha-color: rgba(217, 0, 98, 0.75);
+    --second-color: rgb(20, 25, 45);
+    --second-alpha-color: rgba(20, 25, 45, 0.75);
+    --third-color: rgb(80, 20, 100);
+    --third-alpha-color: rgba(80, 20, 100, 0.75);
+
+    --link-color: rgb(80, 158, 227); 
+    --link-alpha-color: rgba(80, 158, 227, 0.75); 
+
+    --bg-color: rgb(245, 245, 245);
+    --bg-alpha-color: rgba(245, 245, 245, 0.75);
+}
+
+/* Reset styles */
+body{
+    font-family: 'Raleway', sans-serif;
+}
+
+a{
+    color: var(--link-color);
+    transition: all .2s ease-out;
+}
+a:hover{
+    color: var(--link-alpha-color);
+}
+
+/* Bootstrap styles */
+.navbar-brand svg{
+    height: 40px;
+    width: auto;
+}
+
+.nav-item a{
+    transition: all .2s ease-out;
+    padding-left: 10px;
+}
+.nav-item a:hover{
+    background-color: var(--first-alpha-color);
+}
+
+.nav-link{
+    color: var(--first-color);
+    font-size: 1.15rem;
+    font-weight: bold;
+}
+.nav-link:hover{
+    color: var(--bs-white);
+}
+/* My styles */
+.bg-color {
+    background-color: var(--bg-color);
+}
+
+.bg-alpha-color {
+    background-color: var(--bg-alpha-color);
+}
+
+.gradient-color{
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+.bg-hero-image{
+    background-image: var(--bg-image);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-second-alpha-color{
+    background-color: var(--second-alpha-color);
+}
+
+/*  Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { 
+    
+ }
+
+/*  Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+    .nav-item a:hover{
+        background-color:transparent;
+    }
+ }
+
+/*  Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+    
+ }
+
+/*  X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    
+ }
+
+/*  XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) { 
+    
+ }
