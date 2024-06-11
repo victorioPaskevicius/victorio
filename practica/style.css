@@ -1,0 +1,13 @@
+.d-grid{
+    display: grid;
+    grid-template-rows: 50px;
+    grid-template-columns: repeat(4,minmax(min-content,max-content));
+    grid-auto-rows: 50px;
+    gap: 20px;
+}
+
+.g-item{
+    padding: 10px;
+    border: 1px solid blueviolet;
+    margin: 5px;
+}
