@@ -3,10 +3,12 @@ import pandas as pd
 df = pd.read_csv("PYTHON\\Archivos\\CSV\\archivo.csv",encoding="UTF-8")
 
 # Obteniendo los datos de la columna nombre
-# nombres = df['nombre']
+nombres = df['nombre']
+# print(nombres)
 
 # Obteniendo los datos de la columna apellido
-# apellidos = df['apellido']
+apellidos = df['apellido']
+# print(apellidos)
 
 # Ordenando el df por edad
 df_ascendente = df.sort_values('edad')
@@ -21,7 +23,7 @@ df_concatenado = ([df_descendente,df_ascendente])
 # print(df_concatenado)
 
 # Accediendo a las primeras filas con head
-primer_fila = df.head()
+primer_fila = df.head(1)
 # print(primer_fila)
 
 # Accediendo a las ultimas filas con tail
@@ -36,8 +38,8 @@ fila,columna = df.shape
 elemento_loc = df.loc[2,'nombre']
 # print(elemento_loc)
 
-# Accediendo a un elemento especifico de la tabla con loc
-elemento_iloc = df.iloc[3,0]
+# Accediendo a un elemento especifico de la tabla con iloc
+elemento_iloc = df.iloc[2,0]
 # print(elemento_iloc)
 
 # Accediendo a todas las filas de una columna con iloc
