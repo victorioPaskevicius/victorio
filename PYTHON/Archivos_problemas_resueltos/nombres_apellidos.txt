@@ -1,2 +1,0 @@
-los nombres son: ['victorio', 'camila', 'da vinchi', 'pepito'] 
-los apellidos son: ['Paskevicius', 'flores', 'di caprio', 'rojas'] 
