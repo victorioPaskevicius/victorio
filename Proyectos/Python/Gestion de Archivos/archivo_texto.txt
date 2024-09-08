@@ -1,0 +1,6 @@
+#DIALOGO:
+
+-Tu solo eres un pobre robot
+ No puedes hacer nada
+
+-No me rompas mas los huevos

@@ -25,7 +25,7 @@ resultado6 = re.findall(r'\s',texto)
 # \S == Busca TODO menos espacios y saltos en linea
 resultado7 = re.findall(r'\S',texto)
 
-# \n == Busca menos saltos en linea
+# \n == Busca saltos en linea
 resultado8 = re.findall(r'\n',texto)
 
 # . == Busca TODO menos saltos en linea
@@ -51,4 +51,4 @@ resultado14 = re.findall(r'\d{3}',texto)
 #{n,m} Al menos n y como maximo m
 resultado15 = re.findall(r'\d{1,3}',texto)
 
-print(resultado15)
+print(resultado8)
