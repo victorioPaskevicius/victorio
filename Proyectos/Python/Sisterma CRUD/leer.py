@@ -1,5 +1,6 @@
 # leer.py
 def leer(lista):
-    print('Tareas:', lista)
-    if len(lista) == 0:
+    if len(lista) >= 1:
+        print('Tareas:', lista)
+    else:
         print('No hay tareas')
