@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Piedra Papel Tijera</title>
+</head>
+<body>
+    <div class="marco">
+        <!-- Sección de opciones del jugador -->
+        <div class="options">
+            <div class="elementos" id="piedra">
+                <img src="emojis/piedra.png" alt="Piedra">
+            </div>
+            <div class="elementos" id="papel">
+                <img src="emojis/papel.png" alt="Papel">
+            </div>
+            <div class="elementos" id="tijeras">
+                <img src="emojis/tijeras.png" alt="Tijeras">
+            </div>
+        </div>
+        
+        <!-- Imágenes para mostrar las elecciones -->
+        <div class="image">
+            <img id="eleccionJugador" src="" alt="Elección del jugador">
+        </div>
+
+        <h1><i>VS</i></h1>
+
+        <div class="image">
+            <img id="eleccionComputadora" src="" alt="Elección de la computadora">
+        </div>
+
+        <!-- Resultado -->
+        <h2 id="resultado">¡Haz tu elección!</h2>
+    </div>
+    
+    <script src="func.js"></script>
+</body>
+</html>
