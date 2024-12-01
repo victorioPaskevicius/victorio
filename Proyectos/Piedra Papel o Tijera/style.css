@@ -32,7 +32,6 @@ body{
 }
 
 .marco{
-
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -65,4 +64,11 @@ body{
     width: 300px;
     padding: 5px;
     border: 1px solid black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.image img{
+    height: 200px;
 }
