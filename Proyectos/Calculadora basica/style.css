@@ -1,0 +1,103 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #a0a0a0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* muestreo de numeros */
+.container {
+    background-color: #3a3a3a;
+    width: 500px;
+    height: 70vh;
+
+    border-radius: 2em;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+.contain_results{
+    background-color: #242424;
+
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em;
+
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+    flex-grow: 8;
+}
+.contain_results span {
+    color: rgb(197, 197, 197);
+    font-size: 50px;
+    margin-right: 50px;
+}
+
+/* simbolos */
+.contain_numbers{
+    flex-grow: 4;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.numbers{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+.numbers button{
+    background-color: #242424;
+    padding: 20px 25px;
+    border: none;
+    border-radius: 50%;
+    font-size: 30px;
+    font-weight: 600;
+    color: rgb(197, 197, 197);
+    width: 80px;
+    height: 80px;
+}
+.numbers button:hover{
+    background-color: #2c2c2c;
+    transition: all .1s;
+}
+.numbers button:active{
+    background-color: #363636;
+}
+.num_o {
+    grid-column: 2/3;
+}
+
+.operadores{
+    display: grid;
+    grid-template-rows: repeat(5,1fr);
+    gap: 20px;
+}
+.operadores button{
+    background-color: #cf8701;
+    padding: 20px 25px;
+    border: none;
+    border-radius: 50%;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(197, 197, 197);
+    width: 80px;
+    height: 80px;
+}
+.operadores button:hover{
+    background-color: #ee9b00;
+    transition: all .1s;
+}
+.operadores button:active{
+    background-color: #ffa600;
+}
