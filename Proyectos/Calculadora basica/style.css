@@ -74,7 +74,7 @@ body{
 .numbers button:active{
     background-color: #363636;
 }
-.num_o {
+#num_o {
     grid-column: 2/3;
 }
 
