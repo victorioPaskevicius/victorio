@@ -18,11 +18,13 @@ def count():
     answer = tk.Label(window, text=f"""
     La cantidad de caracteres que hay son: {caracteres}.
     Y la cantidad de palabras son: {words}
-""")
+                                    """)
     answer.pack(pady=20)
+
 # Este es el input en el cual se ingresa el texto
 input = tk.Entry(window,)
 input.pack(pady=20,fill="x")
+
 button = tk.Button(window, text='Procesar',bg='lightblue', command=count)
 button.pack(pady=20)
 
