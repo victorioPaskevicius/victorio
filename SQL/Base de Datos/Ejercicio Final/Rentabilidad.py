@@ -21,16 +21,16 @@ plt.ylabel("revenue")
 plt.show()
 
 # Obteniendo el empleado mas rentable
-with sqlite3.connect("sql/Base de datos/nortwind.db") as conn2:
-    query2 = """
-        SELECT FirstName,LastName,count(*) as ordenes FROM Orders o
-        JOIN Employees e on e.EmployeeID = o.EmployeeID
-        GROUP by o.EmployeeID
-        ORDER by ordenes DESC
-"""
-top_employees = pd.read_sql_query(query2,conn2)
-top_employees.plot(x="FirstName",y="ordenes",figsize=(10,5),legend=False,kind="bar")
-plt.title("Empleados mas rentables")
-plt.xlabel("FirstName")
-plt.ylabel("ordenes")
-plt.show()
+# with sqlite3.connect("sql/Base de datos/nortwind.db") as conn2:
+#     query2 = """
+#         SELECT FirstName,LastName,count(*) as ordenes FROM Orders o
+#         JOIN Employees e on e.EmployeeID = o.EmployeeID
+#         GROUP by o.EmployeeID
+#         ORDER by ordenes DESC
+# """
+# top_employees = pd.read_sql_query(query2,conn2)
+# top_employees.plot(x="FirstName",y="ordenes",figsize=(10,5),legend=False,kind="bar")
+# plt.title("Empleados mas rentables")
+# plt.xlabel("FirstName")
+# plt.ylabel("ordenes")
+# plt.show()
