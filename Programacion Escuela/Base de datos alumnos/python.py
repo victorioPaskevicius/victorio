@@ -1,7 +1,7 @@
 import sqlite3
 import tkinter as tk
 from tkinter import messagebox
-db = sqlite3.connect("../Base de datos alumnos//Curso.db")
+db = sqlite3.connect("Curso.db")
 
 # Creando ventana de tkinter
 def agregar_estudiante():
@@ -35,7 +35,7 @@ def agregar_estudiante():
 def actualizar_lista():
     listbox.delete(0, tk.END)
     conn = sqlite3.connect("Curso.db")
-    cursor = conn.execute("SELECT * FROM Curso")
+    cursor = conn.execute("SELECT * FROM Cruso")
     for row in cursor:
         listbox.insert(tk.END, f"{row[0]} - {row[1]}, Edad: {row[2]}, Materia: {row[3]}")
     conn.close()
