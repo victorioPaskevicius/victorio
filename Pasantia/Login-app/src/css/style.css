@@ -1,0 +1,125 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-size: cover;
+
+    background-image: url(../assets/fondo.jpg);
+}
+
+.cont_login{
+    border: 1px solid;
+    border-radius: 5px;
+
+    width: 35%;
+    padding: 50px 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    backdrop-filter: blur(6px);
+    /* -webkit-backdrop-filter: blur(10px); */
+}
+
+.title{
+    text-align: center;
+    color: rgb(215, 215, 215);
+}
+
+.cont_inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 10%;
+}
+
+.cont_name{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+.cont_name label{
+    font-size: 20px;
+    color: rgb(215, 215, 215);
+}
+.cont_name input{
+    height: 40px;
+    padding: 5px 20px;
+    font-size: 18px;
+    border: none;
+
+    background-color: rgb(22, 22, 22, 80%);
+
+    color: rgb(215, 215, 215);
+}
+.cont_name input::placeholder{
+    color: rgb(215, 215, 215);
+}
+
+.cont_password{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+.cont_password label{
+    font-size: 20px;
+    color: rgb(215, 215, 215);
+}
+.cont_password input{
+    height: 40px;
+    padding: 5px 20px;
+    font-size: 18px;
+    border: none;
+
+    background-color: rgb(22, 22, 22, 80%);
+
+    color: rgb(215, 215, 215);
+}
+.cont_password input::placeholder{
+    color: rgb(215, 215, 215);
+}
+
+.cont_btn{
+    display: flex;
+    flex-direction: column;
+}
+.btn_submit{
+    background-color: rgb(15, 184, 15);
+    border: none;
+
+    height: 40px;
+    padding: 5px 20px;
+    font-size: 20px;
+
+    margin: 0 30%;
+
+    transition: all .2s;
+}
+.btn_submit:hover{
+    background-color: rgb(29, 216, 29);
+
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+.btn_submit:active{
+    background-color: rgb(17, 174, 17);
+}
+
+#mensaje{
+    text-align: center;
+    font-size: 25px;
+    background-color: rgb(22, 22, 22, 80%);
+    padding: 5px 0px;
+}
