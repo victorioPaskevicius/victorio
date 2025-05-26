@@ -1,0 +1,6 @@
+const myWeb = require('./math/index')
+// console.log(myWeb)
+console.log(myWeb.add(10,20))
+console.log(myWeb.subtract(10,20))
+console.log(myWeb.multiply(10,20))
+console.log(myWeb.divide(10,20))

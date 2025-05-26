@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <link rel="stylesheet" href="./css/admin.css" />
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin panel</title>
+  </head>
+  <body>
+    <div id="container" class="container-fluid text-center pt-5">
+      <div id="popup" class="popup">
+            <div class="cont_btn_exit">
+                <button type="button" id="btnExit" class="btn-close btn-exit" aria-label="Close"></button>
+            </div>
+            <div class="popup_inputs">
+                <div class="input_title">
+                    <label for="">Edita el titulo de la tarea</label><br>
+                    <input id="inputTitle" type="text">
+                </div>
+                <div class="input_description">
+                    <label for="">Edita la escripcion de la tarea</label><br>
+                    <input id="inputDescription" type="text">
+                </div>
+                <div class="cont_btn_submit">
+                    <button id="btnSubmit" class="btn_submit" type="submit">Realizar cambios</button>
+                </div>
+            </div>
+         </div>
+
+      <h1 id="welcomeAdmin"></h1>
+
+      <div id="accordion" class="accordion accordion-flush container-sm pt-5" id="accordionFlushExample">
+        <!-- <div class="accordion-item border">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseOne"
+              aria-expanded="false"
+              aria-controls="flush-collapseOne"
+            >
+              Tareas de ${usuario}
+            </button>
+          </h2>
+          <div
+            id="flush-collapseOne"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div class="accordion-body">
+              Placeholder content for this accordion, which is intended to
+              demonstrate the <code>.accordion-flush</code> class. This is the
+              first item’s accordion body.
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+
+  
+    <script src="./js/admin.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+
+  </body>
+</html>

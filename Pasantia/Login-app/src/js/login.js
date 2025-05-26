@@ -1,5 +1,6 @@
 // Usa un addEventListener para saber cuando se le hace click al boton de enviar
-document.getElementById('btn_submit').addEventListener('click', async function () {
+document.getElementById('btn_submit').addEventListener('click', async function (e) {
+  e.preventDefault()
     // Aqui se guardan algunos elementos del DOM
     const nombre = document.getElementById('nombre').value.trim();
     const contrasena = document.getElementById('contrasena').value.trim();
@@ -23,9 +24,12 @@ document.getElementById('btn_submit').addEventListener('click', async function (
       const usuarioValido = usuarios.find(u => u.usuario === nombre && u.contrasena === contrasena);
   
       // Condicional que en caso de que "usuarioValido" sea TRUE dé el mensaje de bienvenida, sino de el mensaje de error
-      if (usuarioValido) {
-        mensaje.textContent = `Bienvenido, ${nombre}`;
-        mensaje.style.color = 'green';
+      if (usuarioValido.usuario == 'pablo') {
+        sessionStorage.setItem('usuario', nombre);
+        window.location.href = '../../CRUD-app/src/admin.html'
+      }else if (usuarioValido) {
+        sessionStorage.setItem('usuario', nombre);
+        window.location.href = '../../CRUD-app/src/userCRUD.html'
       } else {
         mensaje.textContent = 'Usuario o contraseña incorrectos';
         mensaje.style.color = 'red';
@@ -35,4 +39,5 @@ document.getElementById('btn_submit').addEventListener('click', async function (
       mensaje.textContent = 'Error al cargar la base de datos';
       mensaje.style.color = 'red';
     }
-  });
+  }
+);
