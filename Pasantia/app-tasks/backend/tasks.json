@@ -1,0 +1,26 @@
+{
+  "pope": [
+    {
+      "id": 1,
+      "title": "primer tarea",
+      "description": "Descripción de la tarea",
+      "status": "pendiente"
+    }
+  ],
+  "pepe": [
+    {
+      "id": 1,
+      "title": "primer tarea",
+      "description": "Descripción de la tarea",
+      "status": "pendiente"
+    }
+  ],
+  "pipe": [
+    {
+      "id": 1,
+      "title": "primer tarea",
+      "description": "Descripción de la tarea",
+      "status": "pendiente"
+    }
+  ]
+}

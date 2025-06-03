@@ -1,0 +1,8 @@
+body {
+  background-image: url(../../assets/paisaje.jpg);
+}
+
+.form{
+    width: 30dvw;
+    backdrop-filter: blur(6px);
+}
