@@ -1,106 +1,94 @@
 const express = require("express");
-const fs = require("fs");
 const routes = express.Router();
+const db = require("../sql/sql");
+
+// Función para obtener o crear un usuario por nombre
+function getOrCreateUser(name, callback) {
+  db.get("SELECT id FROM users WHERE name = ?", [name], (err, row) => {
+    if (err) return callback(err);
+
+    if (row) {
+      callback(null, row.id);
+    } else {
+      db.run("INSERT INTO users (name) VALUES (?)", [name], function (err) {
+        if (err) return callback(err);
+        callback(null, this.lastID);
+      });
+    }
+  });
+}
 
 // Obtener tareas por usuario
 routes.get("/tasks/:user", (req, res) => {
   const user = req.params.user;
 
-  fs.readFile("./tasks.json", "utf8", (err, data) => {
-    if (err) return res.status(500).json({ error: "No se pudieron leer las tareas" });
+  getOrCreateUser(user, (err, userId) => {
+    if (err) return res.status(500).json({ error: "Error al obtener usuario" });
 
-    const users = JSON.parse(data);
-    const userTasks = users[user];
-
-    if (!userTasks) {
-      return res.status(404).json({ error: "Usuario no encontrado" });
-    }
-
-    res.json(userTasks);
+    db.all("SELECT * FROM tasks WHERE user_id = ?", [userId], (err, rows) => {
+      if (err) return res.status(500).json({ error: "Error al leer tareas" });
+      res.json(rows);
+    });
   });
 });
 
-// Agregar tarea a usuario
+// Agregar tarea
 routes.post("/tasks/:user", (req, res) => {
   const user = req.params.user;
-  let { title, description } = req.body;
+  const { title, description, status } = req.body;
 
   if (!title || !description) {
     return res.status(400).json({ error: "Falta título o descripción" });
   }
 
-  fs.readFile("./tasks.json", "utf8", (err, data) => {
-    if (err) return res.status(500).json({ error: "No se pudo leer el archivo" });
+  getOrCreateUser(user, (err, userId) => {
+    if (err) return res.status(500).json({ error: "Error al obtener usuario" });
 
-    let users = JSON.parse(data);
-    let newTask = { id: 1, title, description };
+    const sql =
+      "INSERT INTO tasks (user_id, title, description, status) VALUES (?, ?, ?, ?)";
+    db.run(sql, [userId, title, description, status], function (err) {
+      if (err)
+        return res.status(500).json({ error: "Error al insertar tarea" });
 
-    if (!users[user]) {
-      users[user] = [newTask];
-    } else {
-      const userTasks = users[user];
-      const lastId = userTasks.length > 0 ? userTasks[userTasks.length - 1].id : 0;
-      newTask.id = lastId + 1;
-      userTasks.push(newTask);
-    }
-
-    fs.writeFile("./tasks.json", JSON.stringify(users, null, 2), (err) => {
-      if (err) return res.status(500).json({ error: "Error al guardar la tarea" });
-      res.status(201).json(newTask);
+      res.status(201).json({
+        id: this.lastID,
+        user_id: userId,
+        title,
+        description,
+        status,
+      });
     });
   });
 });
 
-// Actualizar tarea por ID
+// Editar tarea
 routes.put("/tasks/:user/:id", (req, res) => {
-  const user = req.params.user;
-  const id = parseInt(req.params.id);
-  const updatedTask = req.body;
+  const id = req.params.id;
+  const { title, description, status } = req.body;
 
-  fs.readFile("./tasks.json", "utf8", (err, data) => {
-    if (err) return res.status(500).json({ error: "Error leyendo tareas" });
+  const sql =
+    "UPDATE tasks SET title = ?, description = ?, status = ? WHERE id = ?";
+  db.run(sql, [title, description, status, id], function (err) {
+    if (err)
+      return res.status(500).json({ error: "Error al actualizar tarea" });
 
-    let users = JSON.parse(data);
-    let userTasks = users[user];
-
-    if (!userTasks) return res.status(404).json({ error: "Usuario no encontrado" });
-
-    const taskIndex = userTasks.findIndex((task) => task.id === id);
-    if (taskIndex === -1) return res.status(404).json({ error: "Tarea no encontrada" });
-
-    const newTask = { id, ...updatedTask };
-    users[user][taskIndex] = newTask;
-
-    fs.writeFile("./tasks.json", JSON.stringify(users, null, 2), (err) => {
-      if (err) return res.status(500).json({ error: "Error guardando tarea actualizada" });
-      res.json(newTask);
-    });
+    res.json({ id, title, description, status });
   });
 });
 
-// Eliminar tarea por ID
+// Eliminar tarea
 routes.delete("/tasks/:user/:id", (req, res) => {
-  const id = parseInt(req.params.id);
-  const user = req.params.user;
+  const id = req.params.id;
 
-  fs.readFile("./tasks.json", "utf8", (err, data) => {
-    if (err) return res.status(500).json({ error: "Error leyendo tareas" });
+  const sql = "DELETE FROM tasks WHERE id = ?";
+  db.run(sql, [id], function (err) {
+    if (err) return res.status(500).json({ error: "Error al eliminar tarea" });
 
-    const users = JSON.parse(data);
-
-    if (!users[user]) return res.status(404).json({ error: "Usuario no encontrado" });
-
-    const oldLength = users[user].length;
-    users[user] = users[user].filter((task) => task.id !== id);
-
-    if (users[user].length === oldLength) {
+    if (this.changes === 0) {
       return res.status(404).json({ error: "Tarea no encontrada" });
     }
 
-    fs.writeFile("./tasks.json", JSON.stringify(users, null, 2), (err) => {
-      if (err) return res.status(500).json({ error: "Error al eliminar la tarea" });
-      res.status(204).send(); // No devuelve contenido
-    });
+    res.status(204).send();
   });
 });
 

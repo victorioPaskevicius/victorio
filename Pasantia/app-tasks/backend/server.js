@@ -1,13 +1,15 @@
 const express = require("express");
-const cors = require('cors')
+const cors = require("cors");
+const bodyParser = require("body-parser");
 const routes = require("./routes/routes");
 
 const app = express();
+app.use(cors());
+app.use(bodyParser.json());
 
-app.use(express.json());
-app.use(cors())
-app.use(routes);
+app.use("/", routes);
 
-app.listen(3000, () => {
-  console.log("Servidor escuchando en http://localhost:3000");
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor backend corriendo en http://localhost:${PORT}`);
 });

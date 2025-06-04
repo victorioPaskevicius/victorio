@@ -13,11 +13,23 @@ function User() {
   const [editMode, setEditMode] = useState(false);
   const [editTaskId, setEditTaskId] = useState(null);
 
+  // Leer tareas
   useEffect(() => {
     fetch(`http://localhost:3000/tasks/${userName}`)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          if (res.status === 404) {
+            return fetch(`http://localhost:3000/tasks`, {
+              method: "PATCH",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ [userName]: [] }),
+            }).then(() => []);
+          }
+        }
+        return res.json();
+      })
       .then((data) => setTasks(data))
-      .catch((err) => console.error("Error al cargar tareas:", err));
+      .catch((err) => console.error("Error:", err));
   }, [userName]);
 
   // Función para agregar tarea
@@ -45,6 +57,7 @@ function User() {
   };
   // Funcion para editar tareas
   const handleEditTask = () => {
+    window.scrollTo(0, 0);
     fetch(`http://localhost:3000/tasks/${userName}/${editTaskId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -63,9 +76,6 @@ function User() {
         setPopupDisplay("none");
         setEditMode(false);
         setEditTaskId(null);
-        setInputTitle("");
-        setInputDescription("");
-        setInputStatus("");
       });
   };
   // Funcion para eliminar tareas
@@ -79,7 +89,7 @@ function User() {
       })
       .catch((err) => console.error("Error al eliminar tarea:", err));
 
-    location.reload()
+    location.reload();
   };
 
   return (
@@ -93,6 +103,10 @@ function User() {
             onClick={() => {
               setEditMode(false);
               setPopupDisplay("flex");
+              setInputTitle("");
+              setInputDescription("");
+              setInputStatus("");
+              window.scrollTo(0, 0);
             }}
             className="btn btn-success"
           >
@@ -103,7 +117,7 @@ function User() {
         {/* Popup */}
         <div
           style={{ display: popupDisplay }}
-          className="container-fluid p-3 popup"
+          className="container p-5 popup"
           id="popup"
         >
           <div className="cont_btn_exit">
@@ -151,10 +165,14 @@ function User() {
           </div>
         </div>
 
-        {tasks.map((task) => (
-          <div key={task.id} className="cont_task p-4 bg-light">
+        {/* Tareas */}
+        {tasks.map((task, index) => (
+          <div
+            key={task.id}
+            className=" d-flex flex-column gap-4 cont_task p-4 bg-light"
+          >
             <div className="card-header num_tarea">
-              <p>ID: {task.id}</p>
+              <p>ID: {index + 1}</p>
             </div>
             <div className="card-body cont-title">
               <h5 className="card-title">{task.title}</h5>
@@ -164,7 +182,7 @@ function User() {
             </div>
             <div className="card-body cont_btn_edit">
               <button
-                className="btn btn-primary"
+                className="btn btn-primary btn-lg"
                 onClick={() => {
                   setPopupDisplay("flex");
                   setEditMode(true);
@@ -172,6 +190,7 @@ function User() {
                   setInputTitle(task.title);
                   setInputDescription(task.description);
                   setInputStatus(task.status);
+                  window.scrollTo(0, 0);
                 }}
               >
                 Editar

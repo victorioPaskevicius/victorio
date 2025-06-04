@@ -7,10 +7,10 @@ function Login() {
   const [password, setPassword] = useState('')
 
   const handleLogin = () => {
-    if (userName.trim()) {
-      window.location.href = `./user/${userName}`
-    }else{
+    if (userName === "" || password === "") {
       alert('Debes rellenar todos los campos')
+    }else{
+      window.location.href = `./user/${userName}`
     }
   }
 
@@ -50,7 +50,7 @@ function Login() {
             <button
               type="submit"
               id="btnSubmitLogin"
-              className="btn fs-5 container btn-success mb-3"
+              className=" btn btn-lg fs-5 container-sm btn-success"
               onClick={handleLogin}
             >
               Enviar
