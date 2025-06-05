@@ -3,7 +3,7 @@ const routes = express.Router();
 const db = require("../sql/sql");
 
 // Función para obtener o crear un usuario por nombre
-function getOrCreateUser(name, callback) {
+function getCreateUser(name, callback) {
   db.get("SELECT id FROM users WHERE name = ?", [name], (err, row) => {
     if (err) return callback(err);
 
@@ -18,11 +18,24 @@ function getOrCreateUser(name, callback) {
   });
 }
 
+routes.get("/alltasks", (req, res) => {
+  const sql = `    
+    SELECT tasks.*, users.name AS userName
+    FROM tasks
+    JOIN users ON tasks.user_id = users.id
+    `;
+  db.all(sql, (err, rows) => {
+    if (err) return res.status(500).json({ error: "Error al leer tareas" });
+    res.json(rows);
+    console.log(rows);
+  });
+});
+
 // Obtener tareas por usuario
 routes.get("/tasks/:user", (req, res) => {
   const user = req.params.user;
 
-  getOrCreateUser(user, (err, userId) => {
+  getCreateUser(user, (err, userId) => {
     if (err) return res.status(500).json({ error: "Error al obtener usuario" });
 
     db.all("SELECT * FROM tasks WHERE user_id = ?", [userId], (err, rows) => {
@@ -41,7 +54,7 @@ routes.post("/tasks/:user", (req, res) => {
     return res.status(400).json({ error: "Falta título o descripción" });
   }
 
-  getOrCreateUser(user, (err, userId) => {
+  getCreateUser(user, (err, userId) => {
     if (err) return res.status(500).json({ error: "Error al obtener usuario" });
 
     const sql =
