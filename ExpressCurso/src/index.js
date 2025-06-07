@@ -1,5 +1,6 @@
 import express from "express";
 import morgan from "morgan";
+import axios from "axios"
 import 'ejs'
 
 import path from "path";
@@ -19,6 +20,12 @@ app.use(morgan("dev"));
 app.get("/note.txt", (req, res) => {
   res.send("Esto no es un archivo");
 });
+app.get('/posts', async (req,res)=>{
+  const response = await axios.get('https://jsonplaceholder.typicode.com/posts')
+  res.render('index.ejs', {
+    posts: response.data
+  })
+})
 
 // app.get('/products', (req,res)=>{
 //     res.send('lista de productos')
