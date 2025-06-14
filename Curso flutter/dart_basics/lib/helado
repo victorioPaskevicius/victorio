@@ -1,5 +1,0 @@
-class helado () {
-  String color = 'Rosa';
-  String forma = 'Redondo';
-  int bochas = '3';
-} 
