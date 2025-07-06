@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
               onPressed: () {
                 final nombre = nombreController.text.trim();
                 final gmail = gmailController.text.trim();
-                if (nombre.isNotEmpty && gmail.contains('@')) {
+                if (nombre.isNotEmpty && gmail.contains('@escuelasproa.edu.ar')) {
                   Navigator.push(
                     context,
                     MaterialPageRoute(

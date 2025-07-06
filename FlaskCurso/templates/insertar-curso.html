@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert Course</title>
+</head>
+<body>
+    <h1>Insert Course</h1>
+    <form method="post">
+        {{form.csrf_token}}
+        <div>
+            {{ form.nombre.label }}
+            {{ form.nombre(size=50) }}
+        </div>
+        <div>
+            {{ form.instructor.label }}
+            {{ form.instructor(size=50) }}
+        </div>
+        <div>
+            {{ form.topico.label }}
+            {{ form.topico(size=50) }}
+        </div>
+        <div>
+            {{form.send}}
+        </div>
+    </form>
+</body>
+</html>
