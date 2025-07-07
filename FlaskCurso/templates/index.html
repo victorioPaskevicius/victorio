@@ -26,7 +26,11 @@
           <tr>
             <td>{{ curso.id }}</td>
             <td>{{ curso.nombre }}</td>
-            <td align="center"><a href="">ver</a></td>
+            <td align="center">
+              <a href="curso/{{curso.id}}">ver</a>
+              <a href="editar-curso/{{curso.id}}">Editar</a>
+              <a href="eliminar-curso/{{curso.id}}">Eliminar curso</a>
+            </td>
           </tr>
           {% endfor %}
         </tbody>

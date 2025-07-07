@@ -25,7 +25,7 @@ app.config['SECRET_KEY'] = 'LLAVE_SECRETA'
 # Rutas
 @app.route('/')
 def inicio():
-    cursos = Cursos.query.all()
+    cursos = Cursos.query.order_by('id')
     total = Cursos.query.count()
     return render_template('index.html', cursos=cursos, total=total)
 
@@ -48,9 +48,23 @@ def insertCourse():
             return redirect(url_for('inicio'))
     return render_template('insertar-curso.html', form=cursoForm)
 
-# @app.route('editar-curso/')
-# def editCourse(id):
-#     pass
+@app.route('/editar-curso/<int:id>',methods=['GET','POST'])
+def editCourse(id):
+    curso = Cursos.query.get_or_404(id)
+    cursoForm = CursoForm(obj=curso)
+    if request.method == 'POST':
+        if cursoForm.validate_on_submit():
+            cursoForm.populate_obj(curso)
+            db.session.commit()
+            return redirect(url_for('inicio'))
+    return render_template('editar-curso.html',form=cursoForm)
+
+@app.route('/eliminar-curso/<int:id>')
+def deleteCourse(id):
+    curso = Cursos.query.get(id)
+    db.session.delete(curso)
+    db.session.commit()
+    return redirect(url_for('inicio'))
 
 if __name__ == '__main__':
     app.run(debug=True)
